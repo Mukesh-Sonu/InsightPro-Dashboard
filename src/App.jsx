@@ -112,7 +112,8 @@ function App() {
           style={{
             flexDirection: "column",
             flex: 1,
-            overflow: "scroll",
+            overflowY: "scroll",
+            overflowX: "hidden",
             border: "1px solid rgba(5, 5, 5, 0.06)",
             height: "100vh",
           }}

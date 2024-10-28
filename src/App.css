@@ -59,3 +59,11 @@ ul li::marker {
 .ant-steps-item-tail::after {
   background-color: rgba(0, 0, 0, 0.01);
 }
+
+.display-range .ant-slider-handle {
+  display: none;
+}
+
+.display-range .ant-slider {
+  margin: 0;
+}
