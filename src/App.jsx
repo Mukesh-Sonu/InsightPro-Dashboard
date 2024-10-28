@@ -4,6 +4,7 @@ import { ConfigProvider, Flex, Layout, theme } from "antd";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import UtilityPanel from "./components/InfoSidebar/UtilityPanel";
+import InsightsDashboard from "./components/Insights/InsightsDashboard";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -45,6 +46,9 @@ function App() {
           },
           Steps: {
             navArrowColor: "pink",
+          },
+          Typography: {
+            titleMarginBottom: 0,
           },
         },
       }}
@@ -110,6 +114,7 @@ function App() {
             flex: 1,
             overflow: "scroll",
             border: "1px solid rgba(5, 5, 5, 0.06)",
+            height: "100vh",
           }}
         >
           <Navbar />
@@ -121,21 +126,7 @@ function App() {
               // borderRadius: borderRadiusLG,
             }}
           >
-            <p>long content</p>
-            {
-              // indicates very long content
-              Array.from(
-                {
-                  length: 100,
-                },
-                (_, index) => (
-                  <React.Fragment key={index}>
-                    {index % 20 === 0 && index ? "more" : "..."}
-                    <br />
-                  </React.Fragment>
-                )
-              )
-            }
+            <InsightsDashboard />
           </div>
         </Flex>
         <UtilityPanel />

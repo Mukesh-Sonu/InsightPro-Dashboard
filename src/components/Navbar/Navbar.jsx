@@ -14,7 +14,6 @@ const Navbar = () => {
       justify="space-between"
       align="center"
       style={{
-        height: "100%",
         padding: "20px",
         position: "sticky",
         top: 0,
