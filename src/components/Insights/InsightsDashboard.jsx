@@ -4,6 +4,9 @@ import { AgCharts } from "ag-charts-react";
 import InfoCard from "../common/InfoCard";
 const { useToken } = theme;
 
+const fontFamily =
+  "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue";
+
 function getData() {
   return [
     {
@@ -40,41 +43,12 @@ function getData() {
 }
 function getChartData() {
   return [
-    {
-      monthX: "Jan",
-      projection: 14,
-      actual: 15,
-    },
-    {
-      monthX: "Feb",
-      projection: 19,
-      actual: 10,
-    },
-    {
-      monthX: "Mar",
-      projection: 16,
-      actual: 11,
-    },
-    {
-      monthX: "Apr",
-      projection: 13,
-      actual: 19,
-    },
-    {
-      monthX: "May",
-      projection: 14,
-      actual: 24,
-    },
-    {
-      monthX: "Jun",
-      projection: 25,
-      actual: 26,
-    },
-    {
-      monthX: "Aug",
-      projection: 0,
-      actual: 0,
-    },
+    { monthX: "Jan", projection: 10, actual: 14 },
+    { monthX: "Feb", projection: 19, actual: 10 },
+    { monthX: "Mar", projection: 17, actual: 12 },
+    { monthX: "Apr", projection: 11, actual: 18 },
+    { monthX: "May", projection: 13, actual: 21 },
+    { monthX: "Jun", projection: 25, actual: 21 },
   ];
 }
 
@@ -123,8 +97,7 @@ const LineBarGrid = () => {
     title: {
       text: "Projections vs Actuals",
       textAlign: "left",
-      fontFamily:
-        "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
+      fontFamily,
     },
     subtitle: {
       text: "",
@@ -138,7 +111,7 @@ const LineBarGrid = () => {
         type: "bar",
         xKey: "monthX",
         yKey: "actual",
-        yName: "Actual",
+        // yName: "Actual",
         stacked: true,
         tooltip: false,
         cornerRadius: 3,
@@ -148,7 +121,7 @@ const LineBarGrid = () => {
         type: "bar",
         xKey: "monthX",
         yKey: "projection",
-        yName: "valueY",
+        // yName: "valueY",
         stacked: true,
         tooltip: false,
         cornerRadius: 3,
@@ -159,25 +132,17 @@ const LineBarGrid = () => {
     background: {
       fill: "#F7F9FB",
     },
-    seriesArea: {
-      padding: {
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      },
-    },
     axes: [
       {
         type: "number",
         position: "left",
         label: {
           formatter: (params) => {
-            return Math.round(params.value) + "M";
+            const value = Math.round(params.value);
+            return value > 0 ? value + "M" : value;
           },
           color: token.colorTextDisabled,
-          fontFamily:
-            "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
+          fontFamily,
         },
         interval: {
           step: 10,
@@ -188,8 +153,7 @@ const LineBarGrid = () => {
         position: "bottom",
         label: {
           color: token.colorTextDisabled,
-          fontFamily:
-            "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
+          fontFamily,
         },
         paddingInner: 0.7,
         paddingOuter: 0.3,
@@ -204,16 +168,40 @@ const ChartExample = () => {
   const { token } = useToken();
   const [options, setOptions] = useState({
     title: {
-      text: "Projections vs Actuals",
+      text: "Revenue",
+      fontSize: 18,
+      fontWeight: "bold",
+      fontFamily,
+      color: "#2e2e2e",
       textAlign: "left",
-      fontFamily:
-        "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
     },
     subtitle: {
       text: "",
     },
     legend: {
-      enabled: false,
+      enabled: true,
+      reverseOrder: true,
+      position: "top",
+      item: {
+        showSeriesStroke: false,
+        label: {
+          fontSize: 14,
+          fontFamily,
+          maxLength: 30,
+          color: "#1C1C1C",
+          formatter: ({ value }) => {
+            console.log(value);
+            return value == "actual"
+              ? "Current Week $58, 211"
+              : "Previous Week  $68,768";
+          },
+        },
+        marker: {
+          size: 5,
+          strokeWidth: 1,
+          shape: "circle",
+        },
+      },
     },
     data: getChartData(),
     series: [
@@ -221,83 +209,74 @@ const ChartExample = () => {
         type: "line",
         xKey: "monthX",
         yKey: "actual",
-        yName: "Actual",
-        tooltip: false,
         stroke: "#1C1C1C",
         strokeWidth: 3,
         data: getChartData().slice(0, 4),
-        marker: {
-          enabled: false,
-        },
-        interpolation: {
-          type: "smooth",
-        },
+        marker: { enabled: false },
+        interpolation: { type: "smooth" },
+        borderRadius: 10,
       },
       {
         type: "line",
         xKey: "monthX",
         yKey: "actual",
-        yName: "Actual",
-        tooltip: false,
         stroke: "#1C1C1C",
         strokeWidth: 3,
-        lineDash: [10],
+        lineDash: [7],
         data: getChartData().slice(3, 7),
-        interpolation: {
-          type: "smooth",
-        },
-        marker: {
-          enabled: false,
-        },
+        marker: { enabled: false },
+        interpolation: { type: "smooth" },
+        borderRadius: 10,
+        showInLegend: false,
       },
       {
         type: "line",
         xKey: "monthX",
         yKey: "projection",
-        yName: "Projection",
-        strokeWidth: 3,
-        marker: {
-          enabled: false,
-        },
         stroke: "#A8C5DA",
-        interpolation: {
-          type: "smooth",
-        },
+        strokeWidth: 3,
+        marker: { enabled: false },
+        interpolation: { type: "smooth" },
       },
     ],
-    height: 300,
-    background: {
-      fill: "#F7F9FB",
-    },
     axes: [
       {
         type: "number",
         position: "left",
         label: {
+          color: "#8c8c8c",
           formatter: (params) => {
-            return Math.round(params.value) + "M";
+            const value = Math.round(params.value);
+            return value > 0 ? value + "M" : value;
           },
-          color: token.colorTextDisabled,
           fontFamily:
             "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
         },
+        min: 0,
+        max: 30,
+        tick: { count: 4 },
+        line: {
+          width: 0,
+        },
         interval: {
           step: 10,
-          // values: [0, 10, 20],
         },
       },
       {
         type: "category",
         position: "bottom",
         label: {
-          color: token.colorTextDisabled,
+          color: "#8c8c8c",
           fontFamily:
             "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue",
         },
-        paddingInner: 0.7,
-        paddingOuter: 0.3,
+        line: {
+          width: 0,
+        },
       },
     ],
+    height: 350,
+    background: { fill: "#F7F9FB" },
   });
 
   return <AgCharts options={options} />;
@@ -321,7 +300,7 @@ const InsightsDashboard = () => {
             <LineBarGrid />
           </div>
         </Col>
-        <Col span={18}>
+        <Col span={16}>
           <div
             style={{
               borderRadius: "10px",
