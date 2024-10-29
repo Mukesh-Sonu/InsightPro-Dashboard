@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AgCharts } from "ag-charts-react";
 import { getSalesCardData } from "../../common/utils";
+import { theme } from "antd";
+import { FONT_FAMILY } from "../../common/constants";
+const { useToken } = theme;
 
-const SalesCard = () => {
-  const [options] = useState({
+const initialData = ({ colorTextHeading, colorInfoBg, customColors }) => {
+  return {
     data: getSalesCardData(),
     title: {
       text: "Total Sales",
       textAlign: "left",
       fontSize: 14,
+      fontWeight: "bold",
+      color: colorTextHeading,
+      fontFamily: FONT_FAMILY,
     },
     padding: {
       top: 10,
@@ -32,8 +38,17 @@ const SalesCard = () => {
       },
     ],
     height: 200,
-    background: { fill: "#F7F9FB" },
-  });
+    background: { fill: colorInfoBg },
+  };
+};
+
+const SalesCard = () => {
+  const { token } = useToken();
+  const [options, setOptions] = useState(() => initialData(token));
+
+  useEffect(() => {
+    setOptions(initialData(token));
+  }, [token]);
 
   return <AgCharts options={options} />;
 };

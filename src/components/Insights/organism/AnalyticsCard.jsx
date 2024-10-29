@@ -20,6 +20,7 @@ const AnalyticsCard = () => {
           value="3,781"
           percentageValue="+11.01"
           backgroundColor="#E3F5FF"
+          color={token.defaultPrimaryTextHeading}
         />
       </Col>
       <Col span={12}>
@@ -28,7 +29,7 @@ const AnalyticsCard = () => {
           title="Orders"
           value="1,219"
           percentageValue="-0.03"
-          backgroundColor="#F7F9FB"
+          backgroundColor={token.colorInfoBg}
         />
       </Col>
       <Col span={12}>
@@ -36,7 +37,7 @@ const AnalyticsCard = () => {
           title="Revenue"
           value="$695"
           percentageValue="+15.03"
-          backgroundColor="#F7F9FB"
+          backgroundColor={token.colorInfoBg}
         />
       </Col>
       <Col span={12}>
@@ -45,6 +46,7 @@ const AnalyticsCard = () => {
           value="30.1"
           percentageValue="+6.08"
           backgroundColor="#E5ECF6"
+          color={token.defaultPrimaryTextHeading}
         />
       </Col>
     </Row>

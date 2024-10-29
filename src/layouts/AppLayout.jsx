@@ -11,14 +11,23 @@ const RenderOutlet = () => {
   const { token } = useToken();
 
   return (
-    <div
+    <Flex
+      vertical
+      className="main-container"
       style={{
-        padding: "20px",
-        background: token.colorBgBase,
+        border: `1px solid ${token.colorBorderBg}`,
       }}
     >
-      <Outlet />
-    </div>
+      <Navbar />
+      <div
+        style={{
+          padding: "20px",
+          background: token.colorBgBase,
+        }}
+      >
+        <Outlet />
+      </div>
+    </Flex>
   );
 };
 
@@ -36,10 +45,7 @@ const AppLayout = () => {
         }}
       >
         <Sidebar />
-        <Flex vertical className="main-container">
-          <Navbar />
-          <RenderOutlet />
-        </Flex>
+        <RenderOutlet />
         {shouldRenderAsideBar && <UtilityPanel />}
       </Flex>
     </ConfigProvider>

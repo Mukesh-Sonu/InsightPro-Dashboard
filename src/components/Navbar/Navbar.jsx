@@ -6,10 +6,11 @@ import {
   PiBell,
   PiClockCounterClockwiseLight,
   PiSunLight,
+  PiCommandLight,
 } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
-import { DEFAULT_ICON_SIZE } from "../common/constants";
 import { useAppContext } from "../../context/appContext";
+import IconWithColor from "../common/IconWrapper";
 const { useToken } = theme;
 
 const Navbar = () => {
@@ -17,8 +18,6 @@ const Navbar = () => {
   const pathnames = location.pathname.split("/").filter((path) => path);
   const { token } = useToken();
   const { appTheme, setAppTheme } = useAppContext();
-
-  console.log(appTheme, "appTheme");
   const breadcrumbItems = [
     {
       title: "Home",
@@ -35,19 +34,6 @@ const Navbar = () => {
     }),
   ];
 
-  const IconWithColor = ({ icon: Icon, onClick }) => {
-    return (
-      <Icon
-        size={DEFAULT_ICON_SIZE}
-        style={{
-          color: token.colorTextHeading,
-          cursor: onClick ? "pointer" : "default",
-        }}
-        onClick={onClick}
-      />
-    );
-  };
-
   const handleThemeMode = () => {
     if (appTheme == "light") {
       setAppTheme("dark");
@@ -63,6 +49,7 @@ const Navbar = () => {
       className="navbar-container"
       style={{
         background: token.colorBgBase,
+        borderBottom: `1px solid ${token.colorBorderBg}`,
       }}
     >
       <Flex gap="middle">
@@ -75,6 +62,7 @@ const Navbar = () => {
           size="medium"
           placeholder="search"
           prefix={<IconWithColor icon={CiSearch} />}
+          suffix={<IconWithColor icon={PiCommandLight} opacity="0.4" />}
         />
         <IconWithColor icon={PiSunLight} onClick={handleThemeMode} />
         <IconWithColor icon={PiClockCounterClockwiseLight} />

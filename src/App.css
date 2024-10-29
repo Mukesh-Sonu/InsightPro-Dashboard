@@ -28,7 +28,7 @@ ul li::marker {
   font-size: 15px;
 }
 
-.favorite-recent-list {
+/* .favorite-recent-list {
   margin-top: 6px;
 }
 
@@ -40,7 +40,7 @@ ul li::marker {
 
 .favorite-recent-list > ul > li {
   padding: 5px;
-}
+} */
 
 .ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child::before {
   position: absolute;
@@ -76,7 +76,7 @@ ul li::marker {
   display: inline-block;
 }
 
-.insight-table .ant-table-wrapper {
+/* .insight-table .ant-table-wrapper {
   padding: 10px;
   padding-top: 0;
   background: #f7f9fb;
@@ -94,7 +94,7 @@ ul li::marker {
 
 .insight-table .ant-table-tbody > tr > td {
   border: none;
-}
+} */
 
 .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #1c1c1c;
@@ -127,16 +127,15 @@ li.ant-pagination-item.ant-pagination-item-active > a {
   flex: 1;
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 1px solid rgba(5, 5, 5, 0.06);
   height: 100vh;
 }
 
 .sidebar-container {
-  overflow: auto;
+  overflow-y: scroll;
   width: 200px;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  background: transparent;
+  max-height: 100vh;
 }
 
 .navbar-container {

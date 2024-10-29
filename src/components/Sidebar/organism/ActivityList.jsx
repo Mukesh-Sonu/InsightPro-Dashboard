@@ -1,4 +1,4 @@
-import { Space, theme } from "antd";
+import { Space, theme, Flex } from "antd";
 import { useState } from "react";
 const { useToken } = theme;
 
@@ -11,14 +11,29 @@ const ActivityList = () => {
   const renderListItems = (activeTab) => {
     let renderList = activeTab === "favorite" ? favorites : recents;
     return renderList.map((item, index) => (
-      <li
-        style={{
-          color: token.colorTextHeading,
-        }}
+      <Flex
+        vertical
         key={index}
+        style={{
+          marginTop: 5,
+        }}
       >
-        {item}
-      </li>
+        <Space>
+          <span
+            className="dot"
+            style={{
+              background: token.colorSecondary,
+            }}
+          ></span>
+          <span
+            style={{
+              color: token.colorTextHeading,
+            }}
+          >
+            {item}
+          </span>
+        </Space>
+      </Flex>
     ));
   };
 
@@ -28,7 +43,10 @@ const ActivityList = () => {
         <p
           onClick={() => setActiveTab("favorite")}
           style={{
-            color: activeTab !== "favorite" ? token.colorTextDisabled : "",
+            color:
+              activeTab !== "favorite"
+                ? token.textDisabled
+                : token.colorSecondary,
             cursor: "pointer",
           }}
         >
@@ -37,16 +55,17 @@ const ActivityList = () => {
         <p
           onClick={() => setActiveTab("recent")}
           style={{
-            color: activeTab !== "recent" ? token.colorTextDisabled : "",
+            color:
+              activeTab !== "recent"
+                ? token.textDisabled
+                : token.colorSecondary,
             cursor: "pointer",
           }}
         >
           Recent
         </p>
       </Space>
-      <div className="favorite-recent-list">
-        <ul>{renderListItems(activeTab)}</ul>
-      </div>
+      <div className="favorite-recent-list">{renderListItems(activeTab)}</div>
     </>
   );
 };

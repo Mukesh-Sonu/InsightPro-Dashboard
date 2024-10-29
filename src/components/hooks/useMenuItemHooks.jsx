@@ -14,18 +14,24 @@ import {
 } from "react-icons/pi";
 import UserProfile from "../sidebar/organism/UserProfile";
 import ActivityList from "../sidebar/organism/ActivityList";
+import ThemeIcon from "../common/IconWrapper";
+import Text from "../common/Text";
 const { useToken } = theme;
 
 const icons = {
-  "shopping-bag": (props) => <PiShoppingBagOpen {...props} />,
-  "book-open": (props) => <PiBookOpen {...props} />,
-  "arrow-right": (props) => <MdKeyboardArrowRight {...props} />,
-  user: (props) => <PiUserSquareDuotone {...props} />,
-  folder: (props) => <PiFolder {...props} />,
-  "identification-card": (props) => <PiIdentificationCardDuotone {...props} />,
-  note: (props) => <PiNotebook {...props} />,
-  users: (props) => <PiUsersThree {...props} />,
-  chat: (props) => <PiChatsTeardrop {...props} />,
+  "shopping-bag": (props) => <ThemeIcon icon={PiShoppingBagOpen} {...props} />,
+  "book-open": (props) => <ThemeIcon icon={PiBookOpen} {...props} />,
+  "arrow-right": (props) => (
+    <ThemeIcon icon={MdKeyboardArrowRight} {...props} />
+  ),
+  user: (props) => <ThemeIcon icon={PiUserSquareDuotone} {...props} />,
+  folder: (props) => <ThemeIcon icon={PiFolder} {...props} />,
+  "identification-card": (props) => (
+    <ThemeIcon icon={PiIdentificationCardDuotone} {...props} />
+  ),
+  note: (props) => <ThemeIcon icon={PiNotebook} {...props} />,
+  users: (props) => <ThemeIcon icon={PiUsersThree} {...props} />,
+  chat: (props) => <ThemeIcon icon={PiChatsTeardrop} {...props} />,
 };
 
 const useMenuItemHooks = () => {
@@ -48,14 +54,8 @@ const useMenuItemHooks = () => {
             transition: "transform 0.1s ease",
           }}
         />
-        {icons[icon] && icons[icon]({ size: 20 })}
-        <p
-          style={{
-            color: token.colorTextHeading,
-          }}
-        >
-          {text}
-        </p>
+        {icons[icon] && icons[icon]()}
+        <Text text={text} />
       </Flex>
     );
   };
@@ -80,15 +80,7 @@ const useMenuItemHooks = () => {
       children: [
         {
           key: "default",
-          label: (
-            <p
-              style={{
-                color: token.colorTextHeading,
-              }}
-            >
-              Default
-            </p>
-          ),
+          label: <Text text="Default" />,
           icon: (
             <PiChartPieSliceDuotone size={20} color={token.colorTextHeading} />
           ),
@@ -155,7 +147,7 @@ const useMenuItemHooks = () => {
               label: "Overview",
             },
             {
-              key: "projects",
+              key: "projects-pages",
               label: "Projects",
             },
             {

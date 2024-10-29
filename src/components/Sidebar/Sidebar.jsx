@@ -1,8 +1,10 @@
-import { Menu } from "antd";
+import { Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 import useMenuItemHooks from "../hooks/useMenuItemHooks";
+const { useToken } = theme;
 
 const Sidebar = () => {
+  const { token } = useToken();
   const { items, openKeys, setOpenKeys } = useMenuItemHooks();
   const navigate = useNavigate();
   const onClick = (e) => {
@@ -15,7 +17,12 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar-container">
+    <div
+      className="sidebar-container"
+      style={{
+        backgroundColor: token.colorBgBase,
+      }}
+    >
       <Menu
         onClick={onClick}
         onOpenChange={handleOpenChange}

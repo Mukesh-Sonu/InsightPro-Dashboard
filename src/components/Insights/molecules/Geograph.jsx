@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AgCharts } from "ag-charts-react";
 import { FONT_FAMILY } from "../../common/constants";
 import topology from "../../common/topology";
+import { theme } from "antd";
+const { useToken } = theme;
 
-const Geograph = () => {
-  const [options] = useState({
+const intitalData = ({ colorTextHeading, colorInfoBg, customColors }) => {
+  return {
     title: {
       text: "Revenue by Location",
       fontSize: 14,
       fontWeight: "bold",
       fontFamily: FONT_FAMILY,
-      color: "#2e2e2e",
+      color: colorTextHeading,
       textAlign: "left",
     },
     padding: {
@@ -21,6 +23,7 @@ const Geograph = () => {
       {
         type: "map-shape-background",
         topology,
+        fill: customColors.mapBg,
       },
       {
         type: "map-marker",
@@ -69,17 +72,26 @@ const Geograph = () => {
         maxSize: 10,
         strokeWidth: 2,
         fillOpacity: 0.8,
-        stroke: "white",
-        fill: "#1C1C1C",
+        stroke: customColors.mapStroke,
+        fill: customColors.mapFill,
         showInLegend: false,
         highlightStyle: {
           stroke: "orange",
         },
       },
     ],
-    background: { fill: "#F7F9FB" },
+    background: { fill: colorInfoBg },
     height: 200,
-  });
+  };
+};
+
+const Geograph = () => {
+  const { token } = useToken();
+  const [options, setOptions] = useState(() => intitalData(token));
+
+  useEffect(() => {
+    setOptions(intitalData(token));
+  }, [token.colorInfoBg]);
 
   return <AgCharts options={options} />;
 };

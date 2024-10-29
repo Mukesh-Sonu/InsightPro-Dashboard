@@ -13,11 +13,12 @@ const UtilityPanel = () => {
       style={{
         width: "262px",
         flexDirection: "column",
-        paddingTop: "20px",
-        padding: 10,
+        paddingTop: 25,
+        paddingLeft: 10,
         height: "100vh",
         overflow: "scroll",
         background: token.colorBgBase,
+        paddingBottom: 20,
       }}
     >
       <Notification />

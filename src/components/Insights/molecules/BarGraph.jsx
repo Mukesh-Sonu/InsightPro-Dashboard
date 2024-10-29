@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { theme } from "antd";
 import { AgCharts } from "ag-charts-react";
 const { useToken } = theme;
 import { getBarGraphData } from "../../common/utils";
 import { FONT_FAMILY } from "../../common/constants";
 
-const BarGraph = () => {
-  const { token } = useToken();
-  const [options] = useState({
+const initialData = ({ colorTextHeading, colorInfoBg, customColors }) => {
+  return {
     title: {
       text: "Projections vs Actuals",
       textAlign: "left",
       fontFamily: FONT_FAMILY,
       fontSize: 14,
+      color: colorTextHeading,
     },
     subtitle: {
       text: "",
@@ -29,7 +29,7 @@ const BarGraph = () => {
         stacked: true,
         tooltip: false,
         cornerRadius: 3,
-        fill: "#A8C5DA",
+        fill: customColors.barPrimary,
       },
       {
         type: "bar",
@@ -38,12 +38,12 @@ const BarGraph = () => {
         stacked: true,
         tooltip: false,
         cornerRadius: 3,
-        fill: "#CFDFEB",
+        fill: customColors.barSecondary,
       },
     ],
     height: 230,
     background: {
-      fill: "#F7F9FB",
+      fill: colorInfoBg,
     },
     axes: [
       {
@@ -54,7 +54,7 @@ const BarGraph = () => {
             const value = Math.round(params.value);
             return value > 0 ? value + "M" : value;
           },
-          color: token.colorTextDisabled,
+          color: customColors.barTextColor,
           fontFamily: FONT_FAMILY,
         },
         interval: {
@@ -65,14 +65,23 @@ const BarGraph = () => {
         type: "category",
         position: "bottom",
         label: {
-          color: token.colorTextDisabled,
+          color: customColors.barTextColor,
           fontFamily: FONT_FAMILY,
         },
         paddingInner: 0.7,
         paddingOuter: 0.3,
       },
     ],
-  });
+  };
+};
+
+const BarGraph = () => {
+  const { token } = useToken();
+  const [options, setOptions] = useState(() => initialData(token));
+
+  useEffect(() => {
+    setOptions(initialData(token));
+  }, [token]);
 
   return <AgCharts options={options} />;
 };

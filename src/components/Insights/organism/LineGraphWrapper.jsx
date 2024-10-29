@@ -1,7 +1,11 @@
 import { Flex } from "antd";
 import LineGraph from "../molecules/LineGraph";
+import { theme } from "antd";
+import Text from "../../common/Text";
+const { useToken } = theme;
 
 const LineGraphWrapper = () => {
+  const { token } = useToken();
   return (
     <Flex
       style={{
@@ -12,21 +16,15 @@ const LineGraphWrapper = () => {
         style={{
           padding: "20px",
           paddingBottom: 0,
-          background: "#F7F9FB",
+          background: token.colorInfoBg,
         }}
         align="center"
       >
-        <p
-          style={{
-            fontSize: "14px",
-            fontWeight: "bold",
-          }}
-        >
-          Revenue
-        </p>
+        <Text text="Revenue" fontSize="14px" fontWeight="bold" />
         <span
           style={{
             margin: "0 20px",
+            color: token.colorTextDisabled,
           }}
         >
           {" "}
@@ -38,19 +36,19 @@ const LineGraphWrapper = () => {
             <span
               className="dot"
               style={{
-                background: "#A8C5DA",
+                background: token?.customColors?.lineFill,
               }}
             ></span>
-            <p>Current Week $58,211</p>
+            <Text text="Current Week $58,211" />
           </Flex>
           <Flex align="center" gap="small">
             <span
               className="dot"
               style={{
-                background: "#1C1C1C",
+                background: token?.customColors?.barPrimary,
               }}
             ></span>
-            <p>Previous Week $68,768</p>
+            <Text text="Previous Week $68,768" />
           </Flex>
         </Flex>
       </Flex>

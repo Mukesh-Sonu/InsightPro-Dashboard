@@ -1,22 +1,57 @@
-export const getAppTheme = (theme) => ({
-  token: {
-    colorPrimary: theme === "light" ? "#1890ff" : "#1da57a",
-    colorBgBase: theme === "light" ? "#ffffff" : "#001529",
-    colorTextBase: theme === "light" ? "#000000" : "#ffffff",
+const lightTheme = {
+  colorPrimary: "#f4f4f4",
+  colorSecondary: "#bbbbbb",
+  textDisabled: "#D2D2D2",
+  colorBgBase: "#ffffff",
+  colorTextBase: "#000000",
+  colorBorderBg: "#E8E8E8",
+  colorTextHeading: "#1c1c1c",
+  defaultPrimaryTextHeading: "#000000",
+  colorInfoBg: "#F8F9FB",
+  customColors: {
+    mapBg: "#CFDFEB",
+    mapStroke: "#FFFFFF",
+    mapFill: "#1C1C1C",
+    barPrimary: "#A8C5DA",
+    barSecondary: "#CFDFEB",
+    barTextColor: "#C1C2C3",
+    lineFill: "#1C1C1C",
   },
+};
+
+const darkTheme = {
+  colorPrimary: "#333333",
+  colorSecondary: "#777777",
+  textDisabled: "#494949",
+  colorBgBase: "#1C1C1C",
+  colorTextBase: "#ffffff",
+  colorBorderBg: "#333333",
+  colorTextHeading: "#ffffff",
+  defaultPrimaryTextHeading: "#000000",
+  colorInfoBg: "#282828",
+  customColors: {
+    mapBg: "#687681",
+    mapStroke: "#FFFFFF",
+    mapFill: "#C6C7F8",
+    barPrimary: "#A8C5DA",
+    barSecondary: "#687681",
+    barTextColor: "#7E7E7E",
+    lineFill: "#C6C7F8",
+  },
+};
+
+export const getAppTheme = (theme) => ({
+  token: theme === "light" ? lightTheme : darkTheme,
   components: {
     Menu: {
       itemHeight: "28px",
-      itemSelectedColor: "#000000E0",
-      itemSelectedBg: "rgba(0, 0, 0, 0.06)",
+      itemSelectedColor: theme === "light" ? "#1C1C1C" : "#FFFFFF",
+      itemSelectedBg: theme === "light" ? "#F4F4F4" : "#333333",
     },
     List: {
       itemPadding: "0px",
       titleMarginBottom: "1px",
       metaMarginBottom: "0px",
-    },
-    Steps: {
-      navArrowColor: "pink",
     },
     Typography: {
       titleMarginBottom: 0,

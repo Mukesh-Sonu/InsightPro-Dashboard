@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AgCharts } from "ag-charts-react";
 import { getLineGraphData } from "../../common/utils";
 import { FONT_FAMILY } from "../../common/constants";
+import { theme } from "antd";
+const { useToken } = theme;
 
-const LineGraph = () => {
-  const [options] = useState({
+const initialData = ({ colorTextHeading, colorInfoBg, customColors }) => {
+  return {
     title: {
       text: "Revenue",
       fontSize: 14,
       fontWeight: "bold",
       fontFamily: FONT_FAMILY,
-      color: "#2e2e2e",
+      color: colorTextHeading,
       textAlign: "left",
       enabled: false,
     },
@@ -26,7 +28,7 @@ const LineGraph = () => {
           fontSize: 14,
           fontFamily: FONT_FAMILY,
           maxLength: 30,
-          color: "#1C1C1C",
+          color: customColors?.lineFill,
           formatter: ({ value }) => {
             return value == "actual"
               ? "Current Week $58, 211"
@@ -46,11 +48,11 @@ const LineGraph = () => {
         type: "line",
         xKey: "monthX",
         yKey: "actual",
-        stroke: "#1C1C1C",
-        fill: "#1C1C1C",
+        stroke: customColors?.lineFill,
+        fill: customColors?.lineFill,
         strokeWidth: 3,
         data: getLineGraphData().slice(0, 4),
-        marker: { enabled: false, stroke: "#1C1C1C" },
+        marker: { enabled: false, stroke: customColors?.lineFill },
         interpolation: { type: "smooth" },
         borderRadius: 10,
       },
@@ -58,12 +60,12 @@ const LineGraph = () => {
         type: "line",
         xKey: "monthX",
         yKey: "actual",
-        stroke: "#1C1C1C",
-        fill: "#1C1C1C",
+        stroke: customColors?.lineFill,
+        fill: customColors?.lineFill,
         strokeWidth: 3,
         lineDash: [7],
         data: getLineGraphData().slice(3, 7),
-        marker: { enabled: false, stroke: "#1C1C1C" },
+        marker: { enabled: false, stroke: customColors?.lineFill },
         interpolation: { type: "smooth" },
         borderRadius: 10,
         showInLegend: false,
@@ -72,11 +74,11 @@ const LineGraph = () => {
         type: "line",
         xKey: "monthX",
         yKey: "projection",
-        stroke: "#A8C5DA",
-        fill: "#A8C5DA",
+        stroke: customColors?.barPrimary,
+        fill: customColors?.barPrimary,
         strokeWidth: 3,
         marker: { enabled: false },
-        interpolation: { type: "smooth", stroke: "#A8C5DA" },
+        interpolation: { type: "smooth", stroke: customColors?.barPrimary },
       },
     ],
     axes: [
@@ -114,8 +116,17 @@ const LineGraph = () => {
       },
     ],
     height: 310,
-    background: { fill: "#F7F9FB" },
-  });
+    background: { fill: colorInfoBg },
+  };
+};
+
+const LineGraph = () => {
+  const { token } = useToken();
+  const [options, setOptions] = useState(() => initialData(token));
+
+  useEffect(() => {
+    setOptions(initialData(token));
+  }, [token]);
 
   return <AgCharts options={options} />;
 };

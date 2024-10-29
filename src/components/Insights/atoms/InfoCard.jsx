@@ -2,7 +2,6 @@
 import { Card, Typography, Flex, theme } from "antd";
 const { Title, Text } = Typography;
 import { PiTrendDownFill, PiTrendUpFill } from "react-icons/pi";
-const { useToken } = theme;
 
 const InfoCard = ({
   title,
@@ -10,8 +9,8 @@ const InfoCard = ({
   percentageValue,
   backgroundColor,
   onClick,
+  color,
 }) => {
-  const { token } = useToken();
   return (
     <div>
       <Card
@@ -25,27 +24,40 @@ const InfoCard = ({
         <p
           style={{
             textAlign: "left",
+            color,
           }}
         >
           {title}
         </p>
         <Flex align="center" justify="space-between">
-          <Title level={3}>{value}</Title>
+          <Title
+            level={3}
+            style={{
+              color,
+            }}
+          >
+            {value}
+          </Title>
           <Flex align="center" gap="small">
             <Text
               style={{
                 fontSize: "12px",
-                color: token.colorTextSecondary,
+                color,
               }}
             >
-              {percentageValue}
+              {percentageValue}%
             </Text>
             {percentageValue >= 0 ? (
-              <PiTrendUpFill />
+              <PiTrendUpFill
+                style={{
+                  color,
+                }}
+              />
             ) : (
               <PiTrendDownFill
                 style={{
                   transform: `rotate(0deg) scaleX(-1)`,
+                  color,
                 }}
               />
             )}

@@ -1,4 +1,9 @@
 import { Table } from "antd";
+import Text from "../../common/Text";
+import { getTableStyles } from "./DataTableStyles";
+import { theme } from "antd";
+import { useAppContext } from "../../../context/appContext";
+const { useToken } = theme;
 const columns = [
   {
     title: "Name",
@@ -54,26 +59,28 @@ const data = [
     amount: "$1,965.81",
   },
 ];
-const DataTable = () => (
-  <div className="insight-table">
-    <p
-      style={{
-        fontSize: "14px",
-        fontWeight: "bold",
-        textAlign: "left",
-        background: "#f7f9fb",
-        padding: "20px",
-        paddingBottom: 0,
-      }}
-    >
-      Top Selling Products
-    </p>
-    <Table
-      columns={columns}
-      dataSource={data}
-      size="middle"
-      pagination={false}
-    />
-  </div>
-);
+const DataTable = () => {
+  const { token } = useToken();
+  return (
+    <div className="insight-table">
+      <Text
+        text="Top Selling Products"
+        fontWeight="bold"
+        textAlign="left"
+        padding="14px"
+        paddingTop="18px"
+        background={token.colorInfoBg}
+      />
+
+      <style>{getTableStyles(token)}</style>
+      <Table
+        columns={columns}
+        dataSource={data}
+        size="middle"
+        pagination={false}
+        rowHoverable={false}
+      />
+    </div>
+  );
+};
 export default DataTable;

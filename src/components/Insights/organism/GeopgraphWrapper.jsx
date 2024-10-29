@@ -1,7 +1,10 @@
-import { Flex, Slider } from "antd";
+import { Flex, Slider, theme } from "antd";
 import Geograph from "../molecules/Geograph";
+import Text from "../../common/Text";
+const { useToken } = theme;
 
 const GeopgraphWrapper = () => {
+  const { token } = useToken();
   return (
     <Flex
       style={{
@@ -14,7 +17,7 @@ const GeopgraphWrapper = () => {
         className="display-range"
         style={{
           flexDirection: "column",
-          background: "#F7F9FB",
+          background: token.colorInfoBg,
           padding: "0 10px",
           paddingBottom: 10,
         }}
@@ -26,8 +29,8 @@ const GeopgraphWrapper = () => {
           }}
         >
           <Flex justify="space-between" align="center">
-            <p>New York</p>
-            <p>72K</p>
+            <Text text="New York" />
+            <Text text="72K" />
           </Flex>
           <Slider defaultValue={80} disabled />
         </Flex>
@@ -38,8 +41,8 @@ const GeopgraphWrapper = () => {
           }}
         >
           <Flex justify="space-between" align="center">
-            <p>San Fransisco</p>
-            <p>39K</p>
+            <Text text="San Fransisco" />
+            <Text text="39K" />
           </Flex>
           <Slider defaultValue={40} disabled />
         </Flex>
@@ -50,8 +53,8 @@ const GeopgraphWrapper = () => {
           }}
         >
           <Flex justify="space-between" align="center">
-            <p>Sydney</p>
-            <p>25K</p>
+            <Text text="Sydney" />
+            <Text text="25K" />
           </Flex>
           <Slider defaultValue={50} disabled />
         </Flex>
@@ -62,8 +65,8 @@ const GeopgraphWrapper = () => {
           }}
         >
           <Flex justify="space-between" align="center">
-            <p>Singapore</p>
-            <p>61K</p>
+            <Text text="Singapore" />
+            <Text text="61K" />
           </Flex>
           <Slider defaultValue={60} disabled />
         </Flex>

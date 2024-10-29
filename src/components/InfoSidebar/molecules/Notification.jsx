@@ -66,7 +66,7 @@ const Notification = () => {
               description={
                 <Paragraph
                   style={{
-                    color: token.colorTextDisabled,
+                    color: token.colorSecondary,
                   }}
                 >
                   {item?.description}
