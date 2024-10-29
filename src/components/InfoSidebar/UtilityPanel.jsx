@@ -68,7 +68,8 @@ const UtilityPanel = () => {
           strong
           style={{
             paddingLeft: "8px",
-            fontSize: "14px",
+            fontSize: "16px",
+            paddingBottom: "8px",
           }}
         >
           Notifications
@@ -121,7 +122,8 @@ const UtilityPanel = () => {
           strong
           style={{
             paddingLeft: "8px",
-            fontSize: "14px",
+            fontSize: "16px",
+            paddingBottom: "8px",
           }}
         >
           Activities
@@ -215,7 +217,8 @@ const UtilityPanel = () => {
           strong
           style={{
             paddingLeft: "8px",
-            fontSize: "14px",
+            paddingBottom: "8px",
+            fontSize: "16px",
           }}
         >
           Contacts

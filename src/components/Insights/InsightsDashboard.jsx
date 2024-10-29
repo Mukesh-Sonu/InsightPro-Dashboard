@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Row, Col, theme, Flex, Slider, Typography, Space } from "antd";
+import { Row, Col, theme, Flex, Slider } from "antd";
 import { AgCharts } from "ag-charts-react";
 import InfoCard from "../common/InfoCard";
 import topology from "./topology";
 import "ag-charts-enterprise";
+import DataTable from "./DataTable/DataTable";
 const { useToken } = theme;
-const { Text, Paragraph } = Typography;
-
-// console.log(data);
 
 const fontFamily =
   "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue";
@@ -56,6 +54,27 @@ function getChartData() {
     { monthX: "Jun", projection: 25, actual: 21 },
   ];
 }
+export function getSalesData() {
+  return [
+    { asset: "Direct", amount: 600 },
+    { asset: "Affilliate", amount: 400 },
+    { asset: "Sponsored", amount: 100 },
+    { asset: "E-mail", amount: 300 },
+  ];
+}
+
+const Container = ({ children }) => {
+  return (
+    <div
+      style={{
+        borderRadius: "10px",
+        overflow: "hidden",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const AnalyticsGrid = () => {
   return (
@@ -178,12 +197,14 @@ const LineGraph = () => {
       fontFamily,
       color: "#2e2e2e",
       textAlign: "left",
+      enabled: false,
     },
     subtitle: {
       text: "",
     },
     legend: {
-      enabled: true,
+      // enabled: true,
+      enabled: false,
       position: "top",
       item: {
         showSeriesStroke: false,
@@ -281,7 +302,7 @@ const LineGraph = () => {
         },
       },
     ],
-    height: 350,
+    height: 310,
     background: { fill: "#F7F9FB" },
   });
 
@@ -296,7 +317,7 @@ const Map = () => {
       fontWeight: "bold",
       fontFamily,
       color: "#2e2e2e",
-      textAlign: "center",
+      textAlign: "left",
     },
     padding: {
       top: 10,
@@ -379,17 +400,43 @@ const Map = () => {
   return <AgCharts options={options} />;
 };
 
-const Container = ({ children }) => {
-  return (
-    <div
-      style={{
-        borderRadius: "10px",
-        overflow: "hidden",
-      }}
-    >
-      {children}
-    </div>
-  );
+const SalesCard = () => {
+  const [options, setOptions] = useState({
+    data: getSalesData(),
+    title: {
+      text: "Total Sales",
+      textAlign: "left",
+      fontSize: 14,
+    },
+    padding: {
+      top: 10,
+      bottom: 0,
+      left: 20,
+      right: 20,
+    },
+    series: [
+      {
+        type: "donut",
+        calloutLabelKey: "asset",
+        angleKey: "amount",
+        innerRadiusRatio: 0.7,
+        showInLegend: false,
+        cornerRadius: 2,
+        sectorSpacing: 3,
+        fills: ["#1C1C1C", "#BAEDBD", "#B1E3FF", "#95A4FC"],
+        // sectorLabel: {
+        //   enabled: false,
+        // },
+        calloutLabel: {
+          enabled: false,
+        },
+      },
+    ],
+    height: 200,
+    background: { fill: "#F7F9FB" },
+  });
+
+  return <AgCharts options={options} />;
 };
 
 const CountryInsights = () => {
@@ -463,6 +510,130 @@ const CountryInsights = () => {
   );
 };
 
+const LineGraphWrapper = () => {
+  return (
+    <Flex
+      style={{
+        flexDirection: "column",
+      }}
+    >
+      <Flex
+        style={{
+          padding: "20px",
+          paddingBottom: 0,
+          background: "#F7F9FB",
+        }}
+        align="center"
+      >
+        <p
+          style={{
+            fontSize: "14px",
+            fontWeight: "bold",
+          }}
+        >
+          Revenue
+        </p>
+        <span
+          style={{
+            margin: "0 20px",
+          }}
+        >
+          {" "}
+          |
+        </span>
+
+        <Flex gap={30}>
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#A8C5DA",
+              }}
+            ></span>
+            <p>Current Week $58,211</p>
+          </Flex>
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#1C1C1C",
+              }}
+            ></span>
+            <p>Previous Week $68,768</p>
+          </Flex>
+        </Flex>
+      </Flex>
+
+      <LineGraph />
+    </Flex>
+  );
+};
+
+const SalesWrapper = () => {
+  return (
+    <div>
+      <SalesCard />
+      <Flex
+        style={{
+          flexDirection: "column",
+          background: "#F7F9FB",
+          padding: "20px",
+          gap: 8,
+        }}
+      >
+        <Flex justify="space-between">
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#1C1C1C",
+              }}
+            ></span>
+            <p>Direct</p>
+          </Flex>
+          <p>$300.56</p>
+        </Flex>
+        <Flex justify="space-between">
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#BAEDBD",
+              }}
+            ></span>
+            <p>Affiliate</p>
+          </Flex>
+          <p>$135.18</p>
+        </Flex>
+        <Flex justify="space-between">
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#A8C5DA",
+              }}
+            ></span>
+            <p>Sponsored</p>
+          </Flex>
+          <p>$154.02</p>
+        </Flex>
+        <Flex justify="space-between">
+          <Flex align="center" gap="small">
+            <span
+              className="dot"
+              style={{
+                background: "#A8C5DA",
+              }}
+            ></span>
+            <p>Email</p>
+          </Flex>
+          <p>$48.96</p>
+        </Flex>
+      </Flex>
+    </div>
+  );
+};
+
 const InsightsDashboard = () => {
   return (
     <>
@@ -478,12 +649,22 @@ const InsightsDashboard = () => {
         </Col>
         <Col span={18}>
           <Container>
-            <LineGraph />
+            <LineGraphWrapper />
           </Container>
         </Col>
         <Col span={6}>
           <Container>
             <CountryInsights />
+          </Container>
+        </Col>
+        <Col span={18}>
+          <Container>
+            <DataTable />
+          </Container>
+        </Col>
+        <Col span={6}>
+          <Container>
+            <SalesWrapper />
           </Container>
         </Col>
       </Row>

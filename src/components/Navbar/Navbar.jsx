@@ -19,6 +19,7 @@ const Navbar = () => {
         top: 0,
         backgroundColor: "#ffffff",
         borderBottom: "1px solid rgba(5, 5, 5, 0.06)",
+        zIndex: 1000,
       }}
     >
       <Flex gap="middle">

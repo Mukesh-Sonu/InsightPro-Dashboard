@@ -67,3 +67,31 @@ ul li::marker {
 .display-range .ant-slider {
   margin: 0;
 }
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.insight-table .ant-table-wrapper {
+  padding: 10px;
+  padding-top: 0;
+  background: #f7f9fb;
+}
+
+.insight-table .ant-table-cell {
+  background: #f7f9fb;
+  border: none;
+}
+
+.insight-table .ant-table-thead .ant-table-cell {
+  background: #f7f9fb;
+  border-bottom: 1px solid #1c1c1c33;
+}
+
+.insight-table .ant-table-tbody > tr > td {
+  border: none;
+}

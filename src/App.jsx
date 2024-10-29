@@ -50,6 +50,9 @@ function App() {
           Typography: {
             titleMarginBottom: 0,
           },
+          Table: {
+            headerColor: "#A0A1A2",
+          },
         },
       }}
     >
