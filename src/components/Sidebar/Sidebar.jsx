@@ -14,6 +14,7 @@ import {
 } from "react-icons/pi";
 import UserProfile from "./organism/UserProfile";
 import ActivityList from "./organism/ActivityList";
+import { useNavigate } from "react-router-dom";
 
 const icons = {
   "shopping-bag": (props) => <PiShoppingBagOpen {...props} />,
@@ -63,8 +64,11 @@ const getItem = (icon, text, arrowRotation = true) => {
 };
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const onClick = (e) => {
-    console.log("click ", e);
+    if (e.key === "default") {
+      navigate("/");
+    }
   };
 
   const [openKeys, setOpenKeys] = useState([]);
@@ -92,8 +96,8 @@ const Sidebar = () => {
       type: "group",
       children: [
         {
-          key: "20",
-          label: "Overview",
+          key: "default",
+          label: "Default",
           icon: <PiChartPieSliceDuotone size={20} />,
         },
         {
@@ -101,12 +105,12 @@ const Sidebar = () => {
           label: getItem("shopping-bag", "eCommerce", isOpen("ecommerce")),
           children: [
             {
-              key: "1",
-              label: "Option 1",
+              key: "category",
+              label: "Category",
             },
             {
-              key: "2",
-              label: "Option 2",
+              key: "tag",
+              label: "Tag",
             },
           ],
         },
@@ -115,12 +119,12 @@ const Sidebar = () => {
           label: getItem("folder", "Projects", isOpen("projects")),
           children: [
             {
-              key: "3",
-              label: "Option 3",
+              key: "website-builder",
+              label: "Website Builder",
             },
             {
-              key: "4",
-              label: "Option 4",
+              key: "cta",
+              label: "CTA",
             },
           ],
         },
@@ -133,12 +137,12 @@ const Sidebar = () => {
           ),
           children: [
             {
-              key: "5",
-              label: "Option 3",
+              key: "gmat",
+              label: "GMAT",
             },
             {
-              key: "6",
-              label: "Option 4",
+              key: "cat",
+              label: "CAT",
             },
           ],
         },
@@ -154,23 +158,23 @@ const Sidebar = () => {
           label: getItem("user", "User Profile", isOpen("user-profile")),
           children: [
             {
-              key: "7",
+              key: "overview",
               label: "Overview",
             },
             {
-              key: "8",
+              key: "projects",
               label: "Projects",
             },
             {
-              key: "9",
+              key: "campaigns",
               label: "Campaigns",
             },
             {
-              key: "10",
+              key: "documnets",
               label: "Documents",
             },
             {
-              key: "11",
+              key: "followers",
               label: "Followers",
             },
           ],
@@ -180,12 +184,12 @@ const Sidebar = () => {
           label: getItem("identification-card", "Account", isOpen("account")),
           children: [
             {
-              key: "12",
-              label: "Option 3",
+              key: "guest",
+              label: "Guest",
             },
             {
-              key: "13",
-              label: "Option 4",
+              key: "user",
+              label: "User",
             },
           ],
         },
@@ -194,12 +198,12 @@ const Sidebar = () => {
           label: getItem("users", "Corporate", isOpen("corporate")),
           children: [
             {
-              key: "14",
-              label: "Option 3",
+              key: "graphy",
+              label: "Graphy",
             },
             {
-              key: "15",
-              label: "Option 4",
+              key: "Physics Wala",
+              label: "Physics Wala",
             },
           ],
         },
@@ -208,12 +212,12 @@ const Sidebar = () => {
           label: getItem("note", "Blog", isOpen("blog")),
           children: [
             {
-              key: "16",
-              label: "Option 3",
+              key: "medium",
+              label: "Medium",
             },
             {
-              key: "17",
-              label: "Option 4",
+              key: "reddit",
+              label: "Reddit",
             },
           ],
         },
@@ -222,12 +226,12 @@ const Sidebar = () => {
           label: getItem("chat", "Social", isOpen("social")),
           children: [
             {
-              key: "18",
-              label: "Option 3",
+              key: "youtube",
+              label: "You Tube",
             },
             {
-              key: "19",
-              label: "Option 4",
+              key: "telegram",
+              label: "Telegram",
             },
           ],
         },
@@ -241,6 +245,7 @@ const Sidebar = () => {
         onClick={onClick}
         onOpenChange={handleOpenChange}
         openKeys={openKeys}
+        defaultSelectedKeys={["default"]}
         mode="inline"
         items={items}
       />

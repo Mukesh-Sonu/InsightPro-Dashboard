@@ -95,3 +95,30 @@ ul li::marker {
 .insight-table .ant-table-tbody > tr > td {
   border: none;
 }
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #1c1c1c;
+  border-color: #1c1c1c;
+}
+
+.ant-table-thead .ant-table-cell {
+  font-weight: 300 !important;
+}
+
+li.ant-pagination-item {
+  font-weight: 300;
+}
+
+li.ant-pagination-item.ant-pagination-item-active {
+  background-color: #f4f4f4;
+  border: none;
+  color: #1c1c1c;
+}
+li.ant-pagination-item.ant-pagination-item-active > a {
+  color: #1c1c1c;
+  font-weight: 300;
+}
+
+.ant-table-cell::before {
+  display: none;
+}

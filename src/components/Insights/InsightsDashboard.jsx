@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Row, Col, theme, Flex, Slider } from "antd";
 import { AgCharts } from "ag-charts-react";
 import InfoCard from "../common/InfoCard";
+import { useNavigate } from "react-router-dom";
 import topology from "./topology";
 import "ag-charts-enterprise";
 import DataTable from "./DataTable/DataTable";
@@ -77,6 +78,8 @@ const Container = ({ children }) => {
 };
 
 const AnalyticsGrid = () => {
+  const navigate = useNavigate();
+
   return (
     <Row gutter={[24, 24]}>
       <Col span={12}>
@@ -89,6 +92,7 @@ const AnalyticsGrid = () => {
       </Col>
       <Col span={12}>
         <InfoCard
+          onClick={() => navigate("/orders")}
           title="Orders"
           value="1,219"
           percentageValue="-0.03"
@@ -214,7 +218,6 @@ const LineGraph = () => {
           maxLength: 30,
           color: "#1C1C1C",
           formatter: ({ value }) => {
-            console.log(value);
             return value == "actual"
               ? "Current Week $58, 211"
               : "Previous Week  $68,768";
@@ -321,9 +324,6 @@ const Map = () => {
     },
     padding: {
       top: 10,
-      // right: 0,
-      // bottom: 0,
-      // left: 0,
     },
     topology,
     series: [
@@ -335,12 +335,6 @@ const Map = () => {
         type: "map-marker",
         topology,
         data: [
-          // ...europeData,
-          // ...asiaData,
-          // ...africaData,
-          // ...northAmericaData,
-          // ...southAmericaData,
-          // ...oceaniaData,
           {
             pop_est: 37589262,
             pop_rank: 15,
@@ -637,7 +631,6 @@ const SalesWrapper = () => {
 const InsightsDashboard = () => {
   return (
     <>
-      {/* Four cards */}
       <Row gutter={[20, 16]}>
         <Col span={12}>
           <AnalyticsGrid />

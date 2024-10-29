@@ -1,4 +1,5 @@
 import { Flex, Breadcrumb, Input, Space } from "antd";
+import { useLocation } from "react-router-dom";
 import {
   PiNotebook,
   PiStar,
@@ -9,6 +10,25 @@ import {
 import { CiSearch } from "react-icons/ci";
 
 const Navbar = () => {
+  const location = useLocation();
+  const pathnames = location.pathname.split("/").filter((x) => x);
+
+  const breadcrumbItems = [
+    {
+      title: "Home",
+      href: "/",
+    },
+    ...pathnames.map((pathname, index) => {
+      const to = `/${pathnames.slice(0, index + 1).join("/")}`;
+      return index === pathnames.length - 1
+        ? { title: pathname.charAt(0).toUpperCase() + pathname.slice(1) }
+        : {
+            title: pathname.charAt(0).toUpperCase() + pathname.slice(1),
+            href: to,
+          };
+    }),
+  ];
+
   return (
     <Flex
       justify="space-between"
@@ -25,16 +45,7 @@ const Navbar = () => {
       <Flex gap="middle">
         <PiNotebook size={20} />
         <PiStar size={20} />
-        <Breadcrumb
-          items={[
-            {
-              title: "Home",
-            },
-            {
-              title: "An Application",
-            },
-          ]}
-        />
+        <Breadcrumb items={breadcrumbItems} />
       </Flex>
       <Space size="middle" align="center">
         <Input size="medium" placeholder="search" prefix={<CiSearch />} />

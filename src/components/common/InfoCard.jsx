@@ -4,7 +4,13 @@ const { Title, Text } = Typography;
 import { PiTrendDownFill, PiTrendUpFill } from "react-icons/pi";
 const { useToken } = theme;
 
-const InfoCard = ({ title, value, percentageValue, backgroundColor }) => {
+const InfoCard = ({
+  title,
+  value,
+  percentageValue,
+  backgroundColor,
+  onClick,
+}) => {
   const { token } = useToken();
   return (
     <div>
@@ -12,7 +18,9 @@ const InfoCard = ({ title, value, percentageValue, backgroundColor }) => {
         style={{
           backgroundColor,
           borderRadius: "16px",
+          cursor: onClick ? "pointer" : "default",
         }}
+        onClick={onClick ? onClick : null}
       >
         <p
           style={{
