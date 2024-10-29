@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Card, Typography, Flex, theme } from "antd";
 const { Title, Text } = Typography;
 import { PiTrendDownFill, PiTrendUpFill } from "react-icons/pi";
@@ -20,7 +20,7 @@ const InfoCard = ({
           borderRadius: "16px",
           cursor: onClick ? "pointer" : "default",
         }}
-        onClick={onClick ? onClick : null}
+        onClick={onClick ? onClick : () => {}}
       >
         <p
           style={{

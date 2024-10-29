@@ -122,3 +122,28 @@ li.ant-pagination-item.ant-pagination-item-active > a {
 .ant-table-cell::before {
   display: none;
 }
+
+.main-container {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid rgba(5, 5, 5, 0.06);
+  height: 100vh;
+}
+
+.sidebar-container {
+  overflow: auto;
+  width: 200px;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  background: transparent;
+}
+
+.navbar-container {
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+  z-index: 1000;
+}

@@ -8,15 +8,16 @@ import {
   PiSunLight,
 } from "react-icons/pi";
 import { CiSearch } from "react-icons/ci";
+import { DEFAULT_ICON_SIZE } from "../common/constants";
 
 const Navbar = () => {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  const pathnames = location.pathname.split("/").filter((path) => path);
 
   const breadcrumbItems = [
     {
       title: "Home",
-      href: "/",
+      ...(pathnames.length !== 0 ? { href: "/" } : {}),
     },
     ...pathnames.map((pathname, index) => {
       const to = `/${pathnames.slice(0, index + 1).join("/")}`;
@@ -30,29 +31,18 @@ const Navbar = () => {
   ];
 
   return (
-    <Flex
-      justify="space-between"
-      align="center"
-      style={{
-        padding: "20px",
-        position: "sticky",
-        top: 0,
-        backgroundColor: "#ffffff",
-        borderBottom: "1px solid rgba(5, 5, 5, 0.06)",
-        zIndex: 1000,
-      }}
-    >
+    <Flex justify="space-between" align="center" className="navbar-container">
       <Flex gap="middle">
-        <PiNotebook size={20} />
-        <PiStar size={20} />
+        <PiNotebook size={DEFAULT_ICON_SIZE} />
+        <PiStar size={DEFAULT_ICON_SIZE} />
         <Breadcrumb items={breadcrumbItems} />
       </Flex>
       <Space size="middle" align="center">
         <Input size="medium" placeholder="search" prefix={<CiSearch />} />
-        <PiSunLight size={20} />
-        <PiClockCounterClockwiseLight size={20} />
-        <PiNotebook size={20} />
-        <PiBell size={20} />
+        <PiSunLight size={DEFAULT_ICON_SIZE} />
+        <PiClockCounterClockwiseLight size={DEFAULT_ICON_SIZE} />
+        <PiNotebook size={DEFAULT_ICON_SIZE} />
+        <PiBell size={DEFAULT_ICON_SIZE} />
       </Space>
     </Flex>
   );
