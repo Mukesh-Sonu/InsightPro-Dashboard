@@ -1,4 +1,4 @@
-import { Row, Col } from "antd";
+import { Row, Col, theme } from "antd";
 import "ag-charts-enterprise";
 import DataTable from "./organism/DataTable";
 import BarGraph from "./molecules/BarGraph";
@@ -6,6 +6,7 @@ import AnalyticsCard from "./organism/AnalyticsCard";
 import SalesCardWrapper from "./organism/SalesCardWrapper";
 import LineGraphWrapper from "./organism/LineGraphWrapper";
 import GeopgraphWrapper from "./organism/GeopgraphWrapper";
+const { useToken } = theme;
 
 const Container = ({ children }) => {
   return (
@@ -21,9 +22,15 @@ const Container = ({ children }) => {
 };
 
 const InsightsDashboard = () => {
+  const { token } = useToken();
   return (
     <>
-      <Row gutter={[20, 16]}>
+      <Row
+        gutter={[20, 16]}
+        style={{
+          background: token.colorBgBase,
+        }}
+      >
         <Col span={12}>
           <AnalyticsCard />
         </Col>

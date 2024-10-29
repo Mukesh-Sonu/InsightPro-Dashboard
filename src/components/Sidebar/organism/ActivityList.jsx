@@ -5,12 +5,21 @@ const { useToken } = theme;
 const ActivityList = () => {
   const { token } = useToken();
   const [activeTab, setActiveTab] = useState("favorite");
-  const [favorites, setFavorites] = useState(["Overview", "Users"]);
-  const [recents, setRecents] = useState(["Dashboard", "Overview"]);
+  const [favorites] = useState(["Overview", "Users"]);
+  const [recents] = useState(["Dashboard", "Overview"]);
 
   const renderListItems = (activeTab) => {
     let renderList = activeTab === "favorite" ? favorites : recents;
-    return renderList.map((item, index) => <li key={index}>{item}</li>);
+    return renderList.map((item, index) => (
+      <li
+        style={{
+          color: token.colorTextHeading,
+        }}
+        key={index}
+      >
+        {item}
+      </li>
+    ));
   };
 
   return (

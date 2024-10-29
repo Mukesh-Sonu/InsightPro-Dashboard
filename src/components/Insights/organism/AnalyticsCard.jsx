@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import { Row, Col } from "antd";
+import { Row, Col, theme } from "antd";
 import InfoCard from "../atoms/InfoCard";
+const { useToken } = theme;
 
 const AnalyticsCard = () => {
   const navigate = useNavigate();
+  const { token } = useToken();
 
   return (
-    <Row gutter={[24, 24]}>
+    <Row
+      gutter={[24, 24]}
+      style={{
+        background: token.colorBgBase,
+      }}
+    >
       <Col span={12}>
         <InfoCard
           title="Customers"

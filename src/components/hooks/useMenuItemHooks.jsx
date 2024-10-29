@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Flex, Menu } from "antd";
+import { Flex, theme } from "antd";
 import {
   PiShoppingBagOpen,
   PiBookOpen,
@@ -14,6 +14,7 @@ import {
 } from "react-icons/pi";
 import UserProfile from "../sidebar/organism/UserProfile";
 import ActivityList from "../sidebar/organism/ActivityList";
+const { useToken } = theme;
 
 const icons = {
   "shopping-bag": (props) => <PiShoppingBagOpen {...props} />,
@@ -28,6 +29,7 @@ const icons = {
 };
 
 const useMenuItemHooks = () => {
+  const { token } = useToken();
   const [openKeys, setOpenKeys] = useState([]);
   const getItem = (icon, text, arrowRotation = true) => {
     return (
@@ -47,7 +49,13 @@ const useMenuItemHooks = () => {
           }}
         />
         {icons[icon] && icons[icon]({ size: 20 })}
-        <p>{text}</p>
+        <p
+          style={{
+            color: token.colorTextHeading,
+          }}
+        >
+          {text}
+        </p>
       </Flex>
     );
   };
@@ -72,8 +80,18 @@ const useMenuItemHooks = () => {
       children: [
         {
           key: "default",
-          label: "Default",
-          icon: <PiChartPieSliceDuotone size={20} />,
+          label: (
+            <p
+              style={{
+                color: token.colorTextHeading,
+              }}
+            >
+              Default
+            </p>
+          ),
+          icon: (
+            <PiChartPieSliceDuotone size={20} color={token.colorTextHeading} />
+          ),
         },
         {
           key: "ecommerce",

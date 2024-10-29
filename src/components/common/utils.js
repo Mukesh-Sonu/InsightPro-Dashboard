@@ -1,6 +1,8 @@
-export const THEME_CONTEXT = {
+export const getAppTheme = (theme) => ({
   token: {
-    colorPrimary: "#dee2e6",
+    colorPrimary: theme === "light" ? "#1890ff" : "#1da57a",
+    colorBgBase: theme === "light" ? "#ffffff" : "#001529",
+    colorTextBase: theme === "light" ? "#000000" : "#ffffff",
   },
   components: {
     Menu: {
@@ -27,7 +29,7 @@ export const THEME_CONTEXT = {
       cellFontSizeSM: 12,
     },
   },
-};
+});
 
 export const getBarGraphData = () => [
   {

@@ -3,6 +3,7 @@ import InsightsDashboard from "./components/Insights/InsightsDashboard";
 import Orders from "./components/orders/Orders";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
+import ContextProvider from "./context/appContext";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
+  );
 }
 
 export default App;
