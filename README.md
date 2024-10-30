@@ -9,6 +9,7 @@ The **InsightPro Dashboard** is a light and dark-themed, modern analytics dashbo
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Project Structure](#project-structure)
 
 ## Features
 
@@ -59,3 +60,27 @@ To run the development server:
 ```bash
 npm start
 ```
+## Project Structure
+
+The project follows a modular component-based structure to improve reusability and maintainability. Here’s an overview:
+
+### Detailed Breakdown
+
+- **`components/`**: Contains all UI components, organized by function and scope for maintainability.
+  - **`common/`**: Holds common utilities, wrappers, and shared configurations.
+  - **`hooks/`**: Contains custom React hooks for reusable logic.
+  - **`infoSidebar/`**: Handles additional information sections for the sidebar.
+  - **`molecules/`**: Small, reusable UI elements like notifications and contacts.
+  - **`Insights/`**: Insights-specific components, broken down by atomic design principles (atoms, molecules, organisms).
+  - **`navbar/`**: Contains the main navigation bar for the application.
+  - **`orders/`**: Manages the orders page and related components.
+  - **`sidebar/`**: Organizes sidebar structure and components, including user profile and activity lists.
+
+- **`context/`**: Houses React Context for global state management, ensuring a single source of truth for state across components.
+
+- **`layouts/`**: Contains layout components that define general structures for different pages.
+
+- **`App.jsx`**: Main component that serves as the entry point for the app.
+
+- **`main.jsx`**: Root file responsible for rendering the app to the DOM.
+
