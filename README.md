@@ -40,7 +40,7 @@ To get this project running locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone git@github.com:Mukesh-Sonu/dashboard-insights.git
+   git clone git@github.com:Mukesh-Sonu/InsightPro-Dashboard.git
    ```
 2. Install the dependencies:
    ```bash
