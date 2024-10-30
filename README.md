@@ -3,13 +3,16 @@
 The **InsightPro Dashboard** is a light and dark-themed, modern analytics dashboard designed to deliver comprehensive insights into user activity, traffic, and engagement. Built with an intuitive interface, this dashboard is ideal for applications that require real-time data visualization and management capabilities.
 
 ## Table of Contents
-
+- [Demo](#demo)
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+
+## Demo
+Check out the live demo [here](https://insightpro-dashboard.netlify.app).
 
 ## Features
 
