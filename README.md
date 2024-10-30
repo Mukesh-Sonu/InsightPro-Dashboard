@@ -9,8 +9,6 @@ The **InsightPro Dashboard** is a light and dark-themed, modern analytics dashbo
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -22,6 +20,9 @@ The **InsightPro Dashboard** is a light and dark-themed, modern analytics dashbo
 - **Easy Navigation**: Left sidebar navigation for quick access to different sections like Projects, User Profile, Campaigns, and more.
 
 ## Screenshots
+<img width="1038" alt="Screenshot 2024-10-30 at 4 00 51 PM" src="https://github.com/user-attachments/assets/df690b1f-0138-48c9-8382-fe8c155c9d46">
+<img width="1470" alt="Screenshot 2024-10-30 at 4 15 25 PM" src="https://github.com/user-attachments/assets/97ddfde1-a9ad-4f33-af46-026f956d94d2">
+<img width="1470" alt="Screenshot 2024-10-30 at 4 15 48 PM" src="https://github.com/user-attachments/assets/9361da85-2f5e-41d8-9add-7c40f14686ea">
 
 ## Technologies
 
