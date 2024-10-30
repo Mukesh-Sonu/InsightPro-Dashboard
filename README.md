@@ -18,6 +18,11 @@ The **InsightPro Dashboard** is a light and dark-themed, modern analytics dashbo
 - **Notifications & Activities**: Real-time updates on recent user activities and notifications.
 - **Contact List**: Displays a list of recent contacts for quick access.
 - **Easy Navigation**: Left sidebar navigation for quick access to different sections like Projects, User Profile, Campaigns, and more.
+- **Interactive Navigation**:
+  - **Dark/Light Mode Toggle**: Seamlessly switch between light and dark themes.
+  - **Breadcrumb Navigation**: Easily trace your path across pages.
+  - **Order Navigation**: Click on the orders card to navigate directly to the orders page.
+  - **Favorites and Recents Toggle**: Quickly switch between favorite and recent items in the sidebar.
 
 ## Screenshots
 <img width="1038" alt="Screenshot 2024-10-30 at 4 00 51 PM" src="https://github.com/user-attachments/assets/df690b1f-0138-48c9-8382-fe8c155c9d46">
