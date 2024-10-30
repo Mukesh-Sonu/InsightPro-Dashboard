@@ -12,8 +12,8 @@ import {
   PiChatsTeardrop,
   PiChartPieSliceDuotone,
 } from "react-icons/pi";
-import UserProfile from "../sidebar/organism/UserProfile";
-import ActivityList from "../sidebar/organism/ActivityList";
+import UserProfile from "../Sidebar/organism/UserProfile";
+import ActivityList from "../Sidebar/organism/ActivityList";
 import ThemeIcon from "../common/IconWrapper";
 import Text from "../common/Text";
 const { useToken } = theme;
