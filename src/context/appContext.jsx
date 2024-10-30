@@ -4,7 +4,8 @@ import { useState } from "react";
 const ThemeContext = createContext("light");
 
 const ContextProvider = ({ children }) => {
-  const [appTheme, setAppTheme] = useState("light");
+  const theme = localStorage.getItem("theme") || "light";
+  const [appTheme, setAppTheme] = useState(theme);
   return (
     <ThemeContext.Provider
       value={{

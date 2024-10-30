@@ -1,13 +1,20 @@
 const lightTheme = {
   colorPrimary: "#f4f4f4",
-  colorSecondary: "#bbbbbb",
+  colorSecondary: "#A4A4A4",
   textDisabled: "#D2D2D2",
   colorBgBase: "#ffffff",
   colorTextBase: "#000000",
   colorBorderBg: "#E8E8E8",
-  colorTextHeading: "#1c1c1c",
-  defaultPrimaryTextHeading: "#000000",
+  colorTextHeading: "#1C1C1C",
+  defaultPrimaryTextHeading: "#1C1C1C",
   colorInfoBg: "#F8F9FB",
+  avatarColors: {
+    primary: "#E3F5FF",
+    secondary: "#E6ECF6",
+  },
+  tableColors: {
+    primary: "#1C1C1C",
+  },
   customColors: {
     mapBg: "#CFDFEB",
     mapStroke: "#FFFFFF",
@@ -27,8 +34,15 @@ const darkTheme = {
   colorTextBase: "#ffffff",
   colorBorderBg: "#333333",
   colorTextHeading: "#ffffff",
-  defaultPrimaryTextHeading: "#000000",
+  defaultPrimaryTextHeading: "#1C1C1C",
   colorInfoBg: "#282828",
+  avatarColors: {
+    primary: "#E3F5FF",
+    secondary: "#E6ECF6",
+  },
+  tableColors: {
+    primary: "#C6C7F8",
+  },
   customColors: {
     mapBg: "#687681",
     mapStroke: "#FFFFFF",
@@ -40,18 +54,19 @@ const darkTheme = {
   },
 };
 
-export const getAppTheme = (theme) => ({
-  token: theme === "light" ? lightTheme : darkTheme,
+const lightThemeSettings = {
+  token: lightTheme,
   components: {
     Menu: {
       itemHeight: "28px",
-      itemSelectedColor: theme === "light" ? "#1C1C1C" : "#FFFFFF",
-      itemSelectedBg: theme === "light" ? "#F4F4F4" : "#333333",
+      itemSelectedColor: "#1C1C1C",
+      itemSelectedBg: "#F4F4F4",
     },
     List: {
-      itemPadding: "0px",
-      titleMarginBottom: "1px",
-      metaMarginBottom: "0px",
+      itemPadding: 0,
+      titleMarginBottom: 1,
+      metaMarginBottom: 0,
+      avatarMarginRight: 8,
     },
     Typography: {
       titleMarginBottom: 0,
@@ -62,9 +77,55 @@ export const getAppTheme = (theme) => ({
       rowSelectedBg: "transparent",
       headerBg: "transparent",
       cellFontSizeSM: 12,
+      borderColor: "#E8E8E8",
+    },
+    Checkbox: {
+      colorBgContainer: "#FFFFFF",
+      colorWhite: "#FFFFFF",
+      colorPrimaryHover: "#1C1C1C",
+      colorPrimary: "#1C1C1C",
+      colorBorder: "#E8E8E8",
     },
   },
-});
+};
+
+const darkThemeSettings = {
+  token: darkTheme,
+  components: {
+    Menu: {
+      itemHeight: "28px",
+      itemSelectedColor: "#FFFFFF",
+      itemSelectedBg: "#333333",
+    },
+    List: {
+      itemPadding: 0,
+      titleMarginBottom: 1,
+      metaMarginBottom: 0,
+      avatarMarginRight: 8,
+    },
+    Typography: {
+      titleMarginBottom: 0,
+    },
+    Table: {
+      headerColor: "#A0A1A2",
+      rowHoverBg: "#272727",
+      rowSelectedBg: "transparent",
+      headerBg: "transparent",
+      cellFontSizeSM: 12,
+      borderColor: "#333333",
+    },
+    Checkbox: {
+      colorBgContainer: "#1C1C1C",
+      colorWhite: "#1C1C1C",
+      colorPrimaryHover: "#FFFFFF",
+      colorPrimary: "#FFFFFF",
+      colorBorder: "#333333",
+    },
+  },
+};
+
+export const getAppTheme = (theme) =>
+  theme === "light" ? lightThemeSettings : darkThemeSettings;
 
 export const getBarGraphData = () => [
   {

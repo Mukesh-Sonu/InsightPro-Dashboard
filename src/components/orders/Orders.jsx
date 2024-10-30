@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Avatar, Flex, Space, Table } from "antd";
 import { userProfile } from "./userProfile";
+import { theme } from "antd";
+
+const { useToken } = theme;
 const BASE_ORDER_ID = 9800;
 const DEFAULT_IMG = "https://avatars.githubusercontent.com/u/28616219?s=40&v=4";
 const DEFAULT_NAME = "Mukesh";
@@ -95,15 +98,7 @@ const dataSource = Array.from({
 
 const Orders = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const start = () => {
-    setLoading(true);
-    // ajax request after empty completing
-    setTimeout(() => {
-      setSelectedRowKeys([]);
-      setLoading(false);
-    }, 1000);
-  };
+
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };

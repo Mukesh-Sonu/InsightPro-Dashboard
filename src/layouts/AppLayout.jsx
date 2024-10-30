@@ -19,14 +19,16 @@ const RenderOutlet = () => {
       }}
     >
       <Navbar />
-      <div
+      <Flex
+        vertical
         style={{
           padding: "20px",
           background: token.colorBgBase,
+          flex: 1,
         }}
       >
         <Outlet />
-      </div>
+      </Flex>
     </Flex>
   );
 };

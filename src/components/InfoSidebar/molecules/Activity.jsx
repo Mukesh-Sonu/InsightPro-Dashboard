@@ -51,11 +51,18 @@ const Activity = () => {
           paddingLeft: "8px",
           fontSize: "16px",
           paddingBottom: "8px",
+          marginRight: 10,
         }}
       >
         Activities
       </Title>
-      <Steps direction="vertical" current={4} items={activityItems} />
+      <Steps
+        className="stepper"
+        direction="vertical"
+        size="small"
+        current={4}
+        items={activityItems}
+      />
     </Flex>
   );
 };

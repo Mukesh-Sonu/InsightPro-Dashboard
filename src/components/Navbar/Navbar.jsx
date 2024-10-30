@@ -11,6 +11,7 @@ import {
 import { CiSearch } from "react-icons/ci";
 import { useAppContext } from "../../context/appContext";
 import IconWithColor from "../common/IconWrapper";
+import { useEffect } from "react";
 const { useToken } = theme;
 
 const Navbar = () => {
@@ -33,6 +34,10 @@ const Navbar = () => {
           };
     }),
   ];
+
+  useEffect(() => {
+    localStorage.setItem("theme", appTheme);
+  }, [appTheme]);
 
   const handleThemeMode = () => {
     if (appTheme == "light") {
@@ -66,8 +71,8 @@ const Navbar = () => {
         />
         <IconWithColor icon={PiSunLight} onClick={handleThemeMode} />
         <IconWithColor icon={PiClockCounterClockwiseLight} />
-        <IconWithColor icon={PiNotebook} />
         <IconWithColor icon={PiBell} />
+        <IconWithColor icon={PiNotebook} />
       </Space>
     </Flex>
   );
