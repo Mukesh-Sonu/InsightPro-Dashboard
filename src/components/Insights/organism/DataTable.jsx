@@ -79,6 +79,7 @@ const DataTable = () => {
         size="middle"
         pagination={false}
         rowHoverable={false}
+        scroll={{ x: "max-content" }}
       />
     </div>
   );

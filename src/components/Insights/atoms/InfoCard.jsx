@@ -10,60 +10,62 @@ const InfoCard = ({
   backgroundColor,
   onClick,
   color,
+  padding,
+  valueSize,
+  percentSize,
 }) => {
   return (
-    <div>
-      <Card
+    <div
+      style={{
+        backgroundColor,
+        borderRadius: "16px",
+        cursor: onClick ? "pointer" : "default",
+        padding,
+      }}
+      onClick={onClick ? onClick : () => {}}
+    >
+      <p
         style={{
-          backgroundColor,
-          borderRadius: "16px",
-          cursor: onClick ? "pointer" : "default",
+          textAlign: "left",
+          color,
         }}
-        onClick={onClick ? onClick : () => {}}
       >
-        <p
+        {title}
+      </p>
+      <Flex align="center" justify="space-between">
+        <Title
+          level={valueSize}
           style={{
-            textAlign: "left",
             color,
           }}
         >
-          {title}
-        </p>
-        <Flex align="center" justify="space-between">
-          <Title
-            level={3}
+          {value}
+        </Title>
+        <Flex align="center" gap="small">
+          <Text
             style={{
+              fontSize: percentSize,
               color,
             }}
           >
-            {value}
-          </Title>
-          <Flex align="center" gap="small">
-            <Text
+            {percentageValue}%
+          </Text>
+          {percentageValue >= 0 ? (
+            <PiTrendUpFill
               style={{
-                fontSize: "12px",
                 color,
               }}
-            >
-              {percentageValue}%
-            </Text>
-            {percentageValue >= 0 ? (
-              <PiTrendUpFill
-                style={{
-                  color,
-                }}
-              />
-            ) : (
-              <PiTrendDownFill
-                style={{
-                  transform: `rotate(0deg) scaleX(-1)`,
-                  color,
-                }}
-              />
-            )}
-          </Flex>
+            />
+          ) : (
+            <PiTrendDownFill
+              style={{
+                transform: `rotate(0deg) scaleX(-1)`,
+                color,
+              }}
+            />
+          )}
         </Flex>
-      </Card>
+      </Flex>
     </div>
   );
 };

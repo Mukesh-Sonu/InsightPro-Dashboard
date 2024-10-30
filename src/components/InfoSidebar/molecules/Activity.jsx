@@ -9,7 +9,6 @@ const Activity = () => {
         ellipsis={{ tooltip: text }}
         style={{
           marginBottom: 0,
-          width: "190px",
         }}
       >
         {text}

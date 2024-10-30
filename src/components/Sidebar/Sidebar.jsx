@@ -17,21 +17,18 @@ const Sidebar = () => {
   };
 
   return (
-    <div
-      className="sidebar-container"
+    <Menu
       style={{
-        backgroundColor: token.colorBgBase,
+        height: "100vh",
+        overflowY: "scroll",
       }}
-    >
-      <Menu
-        onClick={onClick}
-        onOpenChange={handleOpenChange}
-        openKeys={openKeys}
-        defaultSelectedKeys={["default"]}
-        mode="inline"
-        items={items}
-      />
-    </div>
+      onClick={onClick}
+      onOpenChange={handleOpenChange}
+      openKeys={openKeys}
+      defaultSelectedKeys={["default"]}
+      mode="inline"
+      items={items}
+    />
   );
 };
 

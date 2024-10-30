@@ -114,6 +114,7 @@ const Orders = () => {
         columns={columns}
         dataSource={dataSource}
         size="small"
+        scroll={{ x: "max-content" }}
       />
     </Flex>
   );

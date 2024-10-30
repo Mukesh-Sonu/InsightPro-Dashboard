@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { ConfigProvider, Flex, theme } from "antd";
+import { ConfigProvider, Flex, theme, Row, Col, Layout, Grid } from "antd";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Navbar from "../components/Navbar/Navbar";
 import UtilityPanel from "../components/InfoSidebar/UtilityPanel";
@@ -16,13 +16,14 @@ const RenderOutlet = () => {
       className="main-container"
       style={{
         border: `1px solid ${token.colorBorderBg}`,
+        borderBottom: "transparent",
       }}
     >
       <Navbar />
       <Flex
         vertical
         style={{
-          padding: "20px",
+          padding: 20,
           background: token.colorBgBase,
           flex: 1,
         }}
@@ -37,19 +38,26 @@ const AppLayout = () => {
   const location = useLocation();
   const pathsWithAsideBar = ["/"];
   const shouldRenderAsideBar = pathsWithAsideBar.includes(location.pathname);
-  const { appTheme } = useAppContext();
+  const { appTheme, isLgScreen } = useAppContext();
 
   return (
     <ConfigProvider theme={getAppTheme(appTheme)}>
-      <Flex
-        style={{
-          height: "100vh",
-        }}
-      >
-        <Sidebar />
-        <RenderOutlet />
-        {shouldRenderAsideBar && <UtilityPanel />}
-      </Flex>
+      <Layout>
+        <Row>
+          {isLgScreen && (
+            <Col span={4}>
+              <Sidebar />
+            </Col>
+          )}
+
+          <Col lg={20}>
+            <Flex vertical={isLgScreen ? false : true}>
+              <RenderOutlet />
+              {shouldRenderAsideBar && <UtilityPanel />}
+            </Flex>
+          </Col>
+        </Row>
+      </Layout>
     </ConfigProvider>
   );
 };

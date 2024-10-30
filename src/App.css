@@ -83,14 +83,6 @@ li.ant-pagination-item.ant-pagination-item-active > a {
   height: 100vh;
 }
 
-.sidebar-container {
-  overflow-y: scroll;
-  width: 200px;
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
-  max-height: 100vh;
-}
-
 .navbar-container {
   padding: 20px;
   position: sticky;
@@ -102,4 +94,14 @@ li.ant-pagination-item.ant-pagination-item-active > a {
 
 .stepper .ant-steps-item .ant-steps-item-container .ant-steps-item-icon {
   margin-right: 8px;
+}
+
+p {
+  font-size: 12px;
+}
+
+@media (min-width: 701px) {
+  p {
+    font-size: 14px;
+  }
 }

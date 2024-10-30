@@ -18,7 +18,7 @@ const Navbar = () => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((path) => path);
   const { token } = useToken();
-  const { appTheme, setAppTheme } = useAppContext();
+  const { appTheme, setAppTheme, isLgScreen } = useAppContext();
   const breadcrumbItems = [
     {
       title: "Home",
@@ -47,6 +47,8 @@ const Navbar = () => {
     }
   };
 
+  const SPACING = !isLgScreen ? "small" : "middle";
+
   return (
     <Flex
       justify="space-between"
@@ -57,14 +59,19 @@ const Navbar = () => {
         borderBottom: `1px solid ${token.colorBorderBg}`,
       }}
     >
-      <Flex gap="middle">
+      <Flex gap={SPACING} align="center">
         <IconWithColor icon={PiNotebook} />
         <IconWithColor icon={PiStar} />
-        <Breadcrumb items={breadcrumbItems} />
+        <Breadcrumb
+          items={breadcrumbItems}
+          style={{
+            fontSize: isLgScreen ? "16px" : "10px",
+          }}
+        />
       </Flex>
-      <Space size="middle" align="center">
+      <Space size={SPACING} align="center">
         <Input
-          size="medium"
+          size={SPACING}
           placeholder="search"
           prefix={<IconWithColor icon={CiSearch} />}
           suffix={<IconWithColor icon={PiCommandLight} opacity="0.4" />}

@@ -31,30 +31,30 @@ const InsightsDashboard = () => {
           background: token.colorBgBase,
         }}
       >
-        <Col span={12}>
+        <Col xs={24} sm={24} md={12}>
           <AnalyticsCard />
         </Col>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={12}>
           <Container>
             <BarGraph />
           </Container>
         </Col>
-        <Col span={18}>
+        <Col xs={24} sm={24} md={18}>
           <Container>
             <LineGraphWrapper />
           </Container>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={6}>
           <Container>
             <GeopgraphWrapper />
           </Container>
         </Col>
-        <Col span={18}>
+        <Col xs={24} sm={24} md={18}>
           <Container>
             <DataTable />
           </Container>
         </Col>
-        <Col span={6}>
+        <Col xs={24} sm={24} md={6}>
           <Container>
             <SalesCardWrapper />
           </Container>
