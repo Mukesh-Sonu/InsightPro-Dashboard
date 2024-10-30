@@ -14,6 +14,8 @@ const UtilityPanel = () => {
       style={{
         background: token.colorBgBase,
         padding: 20,
+        maxHeight: "100vh",
+        overflowY: "scroll",
       }}
     >
       <Notification />
