@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Avatar, Flex, Space, Table } from "antd";
 import { userProfile } from "./userProfile";
-import { theme } from "antd";
 
-const { useToken } = theme;
 const BASE_ORDER_ID = 9800;
 const DEFAULT_IMG = "https://avatars.githubusercontent.com/u/28616219?s=40&v=4";
 const DEFAULT_NAME = "Mukesh";

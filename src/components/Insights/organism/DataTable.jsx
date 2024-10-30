@@ -2,7 +2,6 @@ import { Table } from "antd";
 import Text from "../../common/Text";
 import { getTableStyles } from "./DataTableStyles";
 import { theme } from "antd";
-import { useAppContext } from "../../../context/appContext";
 const { useToken } = theme;
 const columns = [
   {

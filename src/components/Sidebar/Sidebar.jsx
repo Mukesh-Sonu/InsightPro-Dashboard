@@ -1,10 +1,8 @@
-import { Menu, theme } from "antd";
+import { Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import useMenuItemHooks from "../hooks/useMenuItemHooks";
-const { useToken } = theme;
 
 const Sidebar = () => {
-  const { token } = useToken();
   const { items, openKeys, setOpenKeys } = useMenuItemHooks();
   const navigate = useNavigate();
   const onClick = (e) => {

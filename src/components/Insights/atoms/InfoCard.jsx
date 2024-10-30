@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Card, Typography, Flex, theme } from "antd";
+import { Typography, Flex } from "antd";
 const { Title, Text } = Typography;
 import { PiTrendDownFill, PiTrendUpFill } from "react-icons/pi";
 
