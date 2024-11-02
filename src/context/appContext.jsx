@@ -10,9 +10,8 @@ const ContextProvider = ({ children }) => {
   const [appTheme, setAppTheme] = useState(theme);
   const screens = useBreakpoint();
   const isLgScreen = screens.lg;
+  const isMdScreen = screens.md;
   const isSmScreen = screens.xs;
-
-  console.log(screens);
 
   return (
     <ThemeContext.Provider
@@ -21,6 +20,7 @@ const ContextProvider = ({ children }) => {
         setAppTheme,
         isSmScreen,
         isLgScreen,
+        isMdScreen,
       }}
     >
       {children}

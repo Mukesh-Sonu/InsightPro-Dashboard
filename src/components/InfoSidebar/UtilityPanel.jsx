@@ -16,6 +16,7 @@ const UtilityPanel = () => {
         padding: 20,
         maxHeight: "100vh",
         overflowY: "scroll",
+        maxWidth: "30%",
       }}
     >
       <Notification />
