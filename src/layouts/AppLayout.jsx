@@ -38,20 +38,20 @@ const AppLayout = () => {
   const location = useLocation();
   const pathsWithAsideBar = ["/"];
   const shouldRenderAsideBar = pathsWithAsideBar.includes(location.pathname);
-  const { appTheme, isLgScreen, isMdScreen } = useAppContext();
+  const { appTheme, isLgScreen, isMdScreen, isSmScreen } = useAppContext();
 
   return (
     <ConfigProvider theme={getAppTheme(appTheme)}>
       <Layout>
         <Row>
           {(isLgScreen || isMdScreen) && (
-            <Col span={4} md={0}>
+            <Col span={4}>
               <Sidebar />
             </Col>
           )}
 
           <Col lg={20} md={20}>
-            <Flex>
+            <Flex vertical={isSmScreen}>
               <RenderOutlet />
               {shouldRenderAsideBar && <UtilityPanel />}
             </Flex>

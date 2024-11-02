@@ -2,10 +2,12 @@ import { Flex, theme } from "antd";
 import Notification from "./molecules/Notification";
 import Activity from "./molecules/Activity";
 import Contact from "./molecules/Contact";
+import { useAppContext } from "../../context/appContext";
 const { useToken } = theme;
 
 const UtilityPanel = () => {
   const { token } = useToken();
+  const { isSmScreen } = useAppContext();
   return (
     <Flex
       className="utility-panel"
@@ -16,7 +18,7 @@ const UtilityPanel = () => {
         padding: 20,
         maxHeight: "100vh",
         overflowY: "scroll",
-        maxWidth: "30%",
+        maxWidth: isSmScreen ? "100%" : "30%",
       }}
     >
       <Notification />
